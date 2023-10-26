@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DAL;
+using Microsoft.AspNetCore.Mvc;
 using ModeloVirtualDIW.Models;
 using System.Diagnostics;
 
@@ -7,10 +8,11 @@ namespace ModeloVirtualDIW.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly Contexto contexto;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(Contexto contexto)
         {
-            _logger = logger;
+            Usuario usu = new Usuario();
         }
 
         public IActionResult Index()

@@ -11,11 +11,11 @@ builder.Services.AddDbContext<Contexto>(
 
 var app = builder.Build();
 
-//using (var scope = app.Services.CreateScope())
-//{
-//    var appDBContext = scope.ServiceProvider.GetRequiredService<Contexto>();
-//    appDBContext.Database.Migrate();
-//}
+using (var scope = app.Services.CreateScope())
+{
+    var appDBContext = scope.ServiceProvider.GetRequiredService<Contexto>();
+    appDBContext.Database.Migrate();
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
