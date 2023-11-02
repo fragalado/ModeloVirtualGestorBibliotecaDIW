@@ -6,16 +6,24 @@ namespace DAL
     {
         public Contexto(DbContextOptions<Contexto> options) : base(options) { }
 
-        // Aseguramos el uso de Ids autoincrementales.
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // Aseguramos el uso de Ids autoincrementales.
             modelBuilder.UseSerialColumns();
 
             // Forma para cambiarle el nombre a las tablas
             modelBuilder.Entity<Usuario>()
-                .ToTable("usuario");
+                .ToTable("usuarios");
             modelBuilder.Entity<Acceso>()
-                .ToTable("acceso");
+                .ToTable("accesos");
+
+            // Hacemos dos pk en RelAutorLibro
+            modelBuilder.Entity<RelAutorLibro>()
+                .HasKey(r => new {r.AutorId, r.LibroId});
+            // Tambien se puede: [PrimaryKey(nameof(PrestamoId), nameof(LibroId))] poniendolo encima de la clase
+            // Lo mismo para RelPrestamoLibro
+            modelBuilder.Entity<RelPrestamoLibro>()
+                .HasKey(r => new { r.PrestamoId, r.LibroId });
         }
 
         // Los DbSet

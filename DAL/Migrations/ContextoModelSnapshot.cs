@@ -38,7 +38,7 @@ namespace DAL.Migrations
 
                     b.HasKey("id_acceso");
 
-                    b.ToTable("acceso", (string)null);
+                    b.ToTable("accesos", (string)null);
                 });
 
             modelBuilder.Entity("DAL.Autor", b =>
@@ -57,7 +57,7 @@ namespace DAL.Migrations
 
                     b.HasKey("id_autor");
 
-                    b.ToTable("autor");
+                    b.ToTable("autores");
                 });
 
             modelBuilder.Entity("DAL.Coleccion", b =>
@@ -73,7 +73,7 @@ namespace DAL.Migrations
 
                     b.HasKey("id_coleccion");
 
-                    b.ToTable("coleccion");
+                    b.ToTable("colecciones");
                 });
 
             modelBuilder.Entity("DAL.Editorial", b =>
@@ -89,7 +89,7 @@ namespace DAL.Migrations
 
                     b.HasKey("id_editorial");
 
-                    b.ToTable("editorial");
+                    b.ToTable("editoriales");
                 });
 
             modelBuilder.Entity("DAL.EstadoPrestamo", b =>
@@ -108,7 +108,7 @@ namespace DAL.Migrations
 
                     b.HasKey("id_estado_prestamo");
 
-                    b.ToTable("estadoPrestamo");
+                    b.ToTable("estados_prestamos");
                 });
 
             modelBuilder.Entity("DAL.Genero", b =>
@@ -127,7 +127,7 @@ namespace DAL.Migrations
 
                     b.HasKey("id_genero");
 
-                    b.ToTable("genero");
+                    b.ToTable("generos");
                 });
 
             modelBuilder.Entity("DAL.Libro", b =>
@@ -150,6 +150,9 @@ namespace DAL.Migrations
                         .HasColumnType("bigint")
                         .HasColumnName("id_genero");
 
+                    b.Property<int?>("cantidad_libro")
+                        .HasColumnType("integer");
+
                     b.Property<string>("edicion_libro")
                         .HasColumnType("text");
 
@@ -167,7 +170,7 @@ namespace DAL.Migrations
 
                     b.HasIndex("GeneroId");
 
-                    b.ToTable("libro");
+                    b.ToTable("libros");
                 });
 
             modelBuilder.Entity("DAL.Prestamo", b =>
@@ -201,17 +204,11 @@ namespace DAL.Migrations
 
                     b.HasIndex("UsuarioId");
 
-                    b.ToTable("prestamo");
+                    b.ToTable("prestamos");
                 });
 
             modelBuilder.Entity("DAL.RelAutorLibro", b =>
                 {
-                    b.Property<long>("id_rel_autores_libros")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    NpgsqlPropertyBuilderExtensions.UseSerialColumn(b.Property<long>("id_rel_autores_libros"));
-
                     b.Property<long>("AutorId")
                         .HasColumnType("bigint")
                         .HasColumnName("id_autor");
@@ -220,38 +217,28 @@ namespace DAL.Migrations
                         .HasColumnType("bigint")
                         .HasColumnName("id_libro");
 
-                    b.HasKey("id_rel_autores_libros");
-
-                    b.HasIndex("AutorId");
+                    b.HasKey("AutorId", "LibroId");
 
                     b.HasIndex("LibroId");
 
-                    b.ToTable("rel_autor_libro");
+                    b.ToTable("rel_autores_libros");
                 });
 
             modelBuilder.Entity("DAL.RelPrestamoLibro", b =>
                 {
-                    b.Property<long>("id_rel_prestamos_libros")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    NpgsqlPropertyBuilderExtensions.UseSerialColumn(b.Property<long>("id_rel_prestamos_libros"));
+                    b.Property<long>("PrestamoId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("id_prestamo");
 
                     b.Property<long>("LibroId")
                         .HasColumnType("bigint")
                         .HasColumnName("id_libro");
 
-                    b.Property<long>("PrestamoId")
-                        .HasColumnType("bigint")
-                        .HasColumnName("id_prestamo");
-
-                    b.HasKey("id_rel_prestamos_libros");
+                    b.HasKey("PrestamoId", "LibroId");
 
                     b.HasIndex("LibroId");
 
-                    b.HasIndex("PrestamoId");
-
-                    b.ToTable("rel_prestamo_libro");
+                    b.ToTable("rel_prestamos_libros");
                 });
 
             modelBuilder.Entity("DAL.Usuario", b =>
@@ -302,7 +289,7 @@ namespace DAL.Migrations
 
                     b.HasIndex("AccesoId");
 
-                    b.ToTable("usuario", (string)null);
+                    b.ToTable("usuarios", (string)null);
                 });
 
             modelBuilder.Entity("DAL.Libro", b =>
