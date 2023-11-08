@@ -7,6 +7,7 @@ namespace ModeloVirtualDIW.Models
         public void insertUsuario(Usuario usuario, Contexto context)
         {
             context.Add<Usuario>(usuario);
+            //context.Usuarios.Add(usuario); Lo mismo
             context.SaveChanges();
         }
 

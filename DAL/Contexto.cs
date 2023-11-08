@@ -27,6 +27,8 @@ namespace DAL
         }
 
         // Los DbSet
+        // Un DbSet es una clase que representa una colección de entidades de un tipo específico.
+        // Se utiliza para realizar operaciones de consulta y modificación en la base de datos.
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Acceso> Accesos { get; set; }
         public DbSet<Libro> Libros { get; set; }

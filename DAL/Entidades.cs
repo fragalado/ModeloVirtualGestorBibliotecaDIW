@@ -45,8 +45,9 @@ namespace DAL
 
         // Constructor
 
-        public Usuario(string dni_usuario, string? nombre_usuario, string? apellidos_usuario, string? tlf_usuario, string? email_usuario, string clave_usuario, bool? estaBloqueado_usuario, DateTime? fch_fin_bloqueo_usuario, DateTime? fch_alta_usuario, DateTime? fch_baja_usuario, long accesoId)
+        public Usuario(long id_usuario, string dni_usuario, string? nombre_usuario, string? apellidos_usuario, string? tlf_usuario, string? email_usuario, string clave_usuario, bool? estaBloqueado_usuario, DateTime? fch_fin_bloqueo_usuario, DateTime? fch_alta_usuario, DateTime? fch_baja_usuario, long accesoId)
         {
+            this.id_usuario = id_usuario;
             this.dni_usuario = dni_usuario;
             this.nombre_usuario = nombre_usuario;
             this.apellidos_usuario = apellidos_usuario;
@@ -94,8 +95,9 @@ namespace DAL
 
         // Constructor
 
-        public Acceso(string codigo_acceso, string? descripcion_acceso)
+        public Acceso(long id_acceso, string codigo_acceso, string? descripcion_acceso)
         {
+            this.id_acceso = id_acceso;
             this.codigo_acceso = codigo_acceso;
             this.descripcion_acceso = descripcion_acceso;
         }
@@ -134,8 +136,9 @@ namespace DAL
 
         // Constructor
 
-        public Libro(string? isbn_libro, string? titulo_libro, string? edicion_libro, int? cantidad_libro, long editorialId, long generoId, long coleccionId)
+        public Libro(long id_libro, string? isbn_libro, string? titulo_libro, string? edicion_libro, int? cantidad_libro, long editorialId, long generoId, long coleccionId)
         {
+            this.id_libro = id_libro;
             this.isbn_libro = isbn_libro;
             this.titulo_libro = titulo_libro;
             this.edicion_libro = edicion_libro;
@@ -161,8 +164,9 @@ namespace DAL
 
         // Constructor
 
-        public Editorial(string? nombre_editorial)
+        public Editorial(long id_editorial, string? nombre_editorial)
         {
+            this.id_editorial = id_editorial;
             this.nombre_editorial = nombre_editorial;
         }
     }
@@ -184,8 +188,9 @@ namespace DAL
 
         // Constructor
 
-        public Genero(string? nombre_genero, string? descripcion_genero)
+        public Genero(long id_genero, string? nombre_genero, string? descripcion_genero)
         {
+            this.id_genero = id_genero;
             this.nombre_genero = nombre_genero;
             this.descripcion_genero = descripcion_genero;
         }
@@ -207,8 +212,9 @@ namespace DAL
 
         // Constructor
 
-        public Coleccion(string? nombre_coleccion)
+        public Coleccion(long id_coleccion, string? nombre_coleccion)
         {
+            this.id_coleccion = id_coleccion;
             this.nombre_coleccion = nombre_coleccion;
         }
     }
@@ -231,8 +237,9 @@ namespace DAL
 
         // Constructor
 
-        public Autor(string? nombre_autor, string? apellidos_autor)
+        public Autor(long id_autor, string? nombre_autor, string? apellidos_autor)
         {
+            this.id_autor = id_autor;
             this.nombre_autor = nombre_autor;
             this.apellidos_autor = apellidos_autor;
         }
@@ -256,8 +263,9 @@ namespace DAL
 
         // Constructor
 
-        public EstadoPrestamo(string? codigo_estado_prestamo, string? descripcion_estado_prestamo)
+        public EstadoPrestamo(long id_estado_prestamo, string? codigo_estado_prestamo, string? descripcion_estado_prestamo)
         {
+            this.id_estado_prestamo = id_estado_prestamo;
             this.codigo_estado_prestamo = codigo_estado_prestamo;
             this.descripcion_estado_prestamo = descripcion_estado_prestamo;
         }
@@ -294,8 +302,9 @@ namespace DAL
 
         // Constructor
 
-        public Prestamo(DateTime? fch_inicio_prestamo, DateTime? fch_fin_prestamo, DateTime? fch_entrega_prestamo, long estadoPrestamoId, long usuarioId)
+        public Prestamo(long id_prestamo, DateTime? fch_inicio_prestamo, DateTime? fch_fin_prestamo, DateTime? fch_entrega_prestamo, long estadoPrestamoId, long usuarioId)
         {
+            this.id_prestamo = id_prestamo;
             this.fch_inicio_prestamo = fch_inicio_prestamo;
             this.fch_fin_prestamo = fch_fin_prestamo;
             this.fch_entrega_prestamo = fch_entrega_prestamo;
